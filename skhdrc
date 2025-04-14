@@ -105,19 +105,16 @@
 #    "qutebrowser"
 # ]
 
-# open terminal, blazingly fast compared to iTerm/Hyper
-cmd - return : /Applications/iTerm.app/Contents/MacOS/iTerm2 
+# open terminal
+cmd + lshift - return : open -a /Applications/iTerm.app
 
 # open qutebrowser
 # cmd + shift - return : ~/Scripts/qtb.sh
 
 # open mpv
-
 # cmd - m : open -na /Applications/mpv.app $(pbpaste)
 
-# move spaces
-hyper - h: yabai -m space --move prev
-hyper - l: yabai -m space --move next
+# Changing Window Focus
 
 # changing screen focus
 lalt - s: yabai -m display --focus west
@@ -129,13 +126,42 @@ lalt - k: yabai -m window --focus north
 lalt - h: yabai -m window --focus west
 lalt - l: yabai -m window --focus east
 
+# Modifying the Layout
+
+# rotate layout clockwise
+lshift + lalt - r: yabai -m space --rotate 270
+
+# flip along y-axis
+lshift + lalt - y: yabai -m space --mirror y-axis
+
+# flip along x-axis
+lshift + lalt - x: yabai -m space --mirror x-axis
+
+# toggle window float
+lshift + lalt - t: yabai -m window --toggle float --grid 4:4:1:1:2:2
+
 # Modifying window size
 
 # maximize window
-lshift + lalt - f: yabai -m window --toggle zoom-fullscreen
+meh - f: yabai -m window --toggle zoom-fullscreen
 
 # balance out tree of windows (resize to occupy same area)
 lshift + lalt - b: yabai -m space --balance
+
+# Moving Windows Around
+
+# swap windows
+lshift + lalt - j: yabai -m window --swap south
+lshift + lalt - k: yabai -m window --swap north
+lshift + lalt - h: yabai -m window --swap west
+lshift + lalt - l: yabai -m window --swap east
+
+# move window and split
+lctrl + lalt - j: yabai -m window --warp south
+lctrl + lalt - k: yabai -m window --warp north
+lctrl + lalt - h: yabai -m window --warp west
+lctrl + lalt - l: yabai -m window --warp east
+
 
 # resizing window
 lshift + lalt - l: yabai -m window --resize right:20:0; yabai -m window --resize left:20:0
@@ -144,8 +170,25 @@ lshift + lalt - j: yabai -m window --resize bottom:0:20; yabai -m window --resiz
 lshift + lalt - k: yabai -m window --resize top:0:-20; yabai -m window --resize bottom:0:-20
 
 # move window to display left or right
-lshift + lalt - s: yabai -m window --display west; yabai -m display --focus west;
-lshift + lalt - g: yabai -m window --display east; yabai -m display --focus east;
+lshift + lalt - s: yabai -m window --display west; yabai -m display --focus west
+lshift + lalt - g: yabai -m window --display east; yabai -m display --focus east
+
+# move window to prev and next space
+lshift + lalt - p: yabai -m space --move prev
+lshift + lalt - n: yabai -m space --move next
+
+# move window to space #
+lshift + lalt - 1: yabai -m window --space 1
+lshift + lalt - 2: yabai -m window --space 2
+lshift + lalt - 3: yabai -m window --space 3
+lshift + lalt - 4: yabai -m window --space 4
+lshift + lalt - 5: yabai -m window --space 5
+lshift + lalt - 6: yabai -m window --space 6
+lshift + lalt - 7: yabai -m window --space 7
+lshift + lalt - 8: yabai -m window --space 8
+lshift + lalt - 9: yabai -m window --space 9
+lshift + lalt - 0: yabai -m window --space 10
+
 
 # start/stop Yabai
 lctrl + lalt - r: echo "Restarting Yabai" && yabai --restart-service
